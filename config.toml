@@ -1,0 +1,14 @@
+title = "Deals Watcher"
+baseURL = ""
+paginate = 50
+PaginatePath = "page"
+theme="shopping"
+publishdir = "public"
+
+disqusShortname = "dailydeals-2"
+
+[Params]
+  description = "Flash Sales"
+  
+[taxonomies]
+	category="categories"

@@ -1,0 +1,42 @@
+<a class="col-xs-12 col-sm-4 col-md-3 col-lg-3" href="{{ .RelPermalink }}" style="color: inherit;">
+    <img class="b-lazy img-fluid mx-auto" style="display:block;" src="{{ .Params.thumbnailImage }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+    <p class="text-center">
+        <span class="trimtext" style="font-size: 13px">{{ .Params.title }}</span>
+        <!--<span style="font-size: 16px">
+            {{ if .Params.comparePrice }}
+                Was ${{ (.Params.comparePrice | string) }}
+            {{ else }}
+                Was ${{ $.Scratch.Set "minimumPrice" "$ 199"}}                 
+            {{ end }}
+			{{ if .Params.actualPrice }}
+                Now at ${{ $.Scratch.Set "minimumPrice" (.Params.actualPrice | string) }}
+            {{ else }}
+                Now at ${{ $.Scratch.Set "minimumPrice" "$39"}}                 
+            {{ end }}
+            {{ if .Params.inStock }}
+                {{ $.Scratch.Set "inStock" (.Params.inStock | string) }}
+            {{ else }}
+                {{ $.Scratch.Set "inStock" "false" }}
+            {{ end }}
+            {{ range .Params.variants }}
+                {{ $variantActualPrice := (.actualPrice | replaceRE "[^0-9.]+" "" | float )  }}
+                {{ $actualPrice := ($.Scratch.Get "minimumPrice" | replaceRE "[^0-9.]+" "" | float) }}
+                {{ if lt $variantActualPrice $actualPrice }}
+                    {{ $.Scratch.Set "minimumPrice" (.actualPrice | string)}} 
+                    {{ $.Scratch.Set "isMinimumVariantPrice" "true"}}
+                {{ end }}
+                {{ if .inStock }}
+                    {{ $.Scratch.Set "inStock" "true" }}
+                {{ end }}
+            {{ end }}
+            {{ if eq ($.Scratch.Get "isMinimumVariantPrice") "true" }} From {{ end }}
+            {{ $.Scratch.Get "minimumPrice" }} 
+            {{ if not (eq ($.Scratch.Get "inStock") "true")}} <span class="font-weight-bold">— Sold Out</span> {{ end }}
+        </span>
+		-->
+		<div style="text-align:center;">Was <strike>${{ (.Params.comparePrice | string) }}</strike></div>
+		<!--<br><strong><div style="text-align:center;">Now at ${{ (.Params.actualPrice | string) }}</div></strong></br>-->
+		<!--<br><strong><div style="text-align:center">This deal ends on {{ .Params.date }}</div></strong></br>-->
+		<br><div style="text-align:center;"><p class="myButton" style="font-size:11px; line-height:2;">Buy Now at ${{ (.Params.actualPrice | string) }}</p></div></br>
+    </p>
+</a>

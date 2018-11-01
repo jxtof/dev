@@ -1,0 +1,14 @@
+
+site/
+
+site2/
+
+siteBak/
+
+site\.zip\.tmp
+
+site\.zip
+
+\.netlify/
+
+public/

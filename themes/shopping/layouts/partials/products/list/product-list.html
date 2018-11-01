@@ -1,0 +1,121 @@
+{{ partial "menu.html" . }}	
+
+<header class="codrops-header" style="background-color:white; background-image:url(https://png.pngtree.com/element_origin_min_pic/16/07/12/10578456d0582d9.jpg);background-repeat:repeat-x">
+    <h1 class="text-center" style="padding:0;">{{ .Site.Title }}</h1>
+    {{ with .Site.Params.description }}<h4 class="text-center">{{ . }}</h4>{{ end }}
+	<div class="row">
+		<div class="mx-auto">
+			<div>All Deals Renews On November 15 31, 2018</div>
+		</div>
+	</div>			
+	<div class="row" style="line-height:1;">
+		<div class="mx-auto">
+			<div class="col-12 demo3"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="mx-auto">
+			<div style="margin-left: 40px;margin-right: 40px; text-align: center;">Our deals are renewed every month, and we might not have the same items on sale.</div>
+		</div>
+	</div>
+	<strong><p style="background-color:#17252A;text-align:center;"><a href="#" id="trigger" class="menu-trigger">MENU</a></p></strong>
+</header>
+<article class="container-fluid" style="padding-right:0;padding-left:0;">
+<button onclick="topFunction()" id="myTopBtn" title="Go to top">Back To Top</button>
+<!--Categories	
+		<div class="row">
+			<div class="col-12 mx-auto">
+				{{ partial "products/common/site-main-nav.html" . }} 
+			</div>
+		</div>	
+</div>-->
+
+
+	<div class="row"><div class="mx-auto">{{ template "_internal/pagination.html" . }}</div></div>
+    <p></p>
+	<div class="row" style="padding-left:40px;padding-right:40px;">
+	{{ range .Paginator.Pages }}
+            {{ partial "products/list/product-list-item.html" . }} 
+	{{ end }}
+    </div>
+	
+	<div class="row"><div class="mx-auto">{{ template "_internal/pagination.html" . }}</div></div>
+	
+    <script>
+    var productVariants = null;
+    </script>
+</article>
+<!-- Footer -->
+{{ partial "footer.html" . }}
+  <!-- Footer -->
+{{ partial "menu-bottom.html" . }}	
+
+<script src="{{ "menu/js/classie.js" | absURL }}"></script>
+<script src="{{ "menu/js/mlpushmenu.js" | absURL }}"></script>
+<script src="{{ "js/dscountdown.js" | absURL }}"></script>
+<script type="text/javascript">	
+			jQuery(document).ready(function($){
+				
+				$('.demo1').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00")
+				});
+				
+				$('.demo2').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'black'
+				});
+				
+				$('.demo3').dsCountDown({
+					endDate: new Date("November 15, 2018 23:59:00"),
+					theme: 'red',
+					titleDays: 'Days',
+					titleHours: 'Hours',
+					titleMinutes: 'Minutes',
+					titleSeconds: 'Seconds'
+				});
+				
+				$('.demo4').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'flat'
+				});
+				
+				$('.demo5').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'custome'
+				});
+				
+				$('.demo6').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					titleDays: 'Days',
+					titleHours: 'Hours',
+					titleMinutes: 'Minutes',
+					titleSeconds: 'Seconds'
+				});
+				
+				$('.demo7').dsCountDown({
+					startDate: new Date("December 24, 2020 23:59:00"), // this value is picked up by PHP script &lt;?php echo date('F d, Y h:i:s'); ?&gt;
+					endDate: new Date("December 24, 2020 23:59:00")
+				});
+				
+			});		
+			
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        document.getElementById("myTopBtn").style.display = "block";
+    } else {
+        document.getElementById("myTopBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+		
+</script>

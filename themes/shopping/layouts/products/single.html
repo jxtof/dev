@@ -1,0 +1,143 @@
+{{ define "main" }}
+{{ partial "menu.html" . }}	
+
+<header class="codrops-header" style="background-image:url(https://png.pngtree.com/element_origin_min_pic/16/07/12/10578456d0582d9.jpg);background-repeat:repeat-x">
+    <h1 class="text-center">{{ .Params.categories }}</h1>
+    {{ with .Site.Params.description }}<h4 class="text-center">{{ . }}</h4>{{ end }}
+
+  <script type="text/javascript">
+    var futureDate2= new Date({{ .Params.date }});
+	if (new Date({{ .Params.date }}) < new Date() ) {futureDate2.setDate(futureDate2.getDate() + 10) }
+  </script>	
+
+	<div class="row">
+		<div class="mx-auto">
+			<strong><div style="margin-left: 40px;margin-right: 40px;text-align:center">This deal ends on <script type="text/javascript"> document.write(futureDate2)  </script></div></strong>
+		</div>
+	</div>	  
+  	<div class="row" style="line-height:1;">
+		<div class="mx-auto">
+			<div class="col-12 demo3"></div>
+		</div>
+	</div>
+	<strong><p style="background-color:#17252A;text-align:center;"><a href="#" id="trigger" class="menu-trigger">MENU</a></p></strong>
+</header>
+<article class="container-fluid" style="padding-right:0;padding-left:0;">
+<button onclick="topFunction()" id="myTopBtn" title="Go to top">Back To Top</button>
+    <div class="row">
+        <div class="col-12" style="z-index:99998;">
+            {{ partial "products/common/site-main-nav.html" . }} 
+        </div>
+    </div>
+    <div class="row align-items-start" style="padding-left:40px;padding-right:40px;">
+        <div class="col-12 col-md-6 order-md-1">
+			{{ range first 1 .Params.BigImage }}
+            <img class="b-lazy img-fluid text-center" data-src="{{ . }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /> 
+			{{ end }}
+        </div>	
+        <div class="col-12 col-md-6 order-md-2">
+            {{ partial "products/single/product-single-heading.html" . }} 
+            <div class="d-none d-md-block">{{ .Params.title }}</div>
+			<br></br><strong><div style="text-align:center">This deal ends on <script type="text/javascript"> document.write(futureDate2)  </script></div></strong>
+			<br></br><!--<strong><div style="text-align:center">Time left:</div></strong>-->
+			<div class="row" style="line-height:1;"><div class="mx-auto"><div class="col-12 demo3"></div></div></div>				
+			<br><a class="myButton form-control" id="BuyNow" href="{{ .Params.linkurl }}" onClick="fbq('trackCustom', 'ViewAliDeal');" target="_blank">BUY ON ALIEXPRESS</a></br>
+        <!--snipcart>
+		<div class="card-action">
+            <button
+                class="snipcart-add-item waves-effect waves-light btn"
+                data-item-id="{{ .Params.title }}"
+                data-item-name="{{ .Params.title }}"
+                data-item-image="{{ .Params.thumbnailImage }}"
+                data-item-price=9
+                data-item-url="{{ .Params.thumbnailImage }}">
+                    <i class="material-icons right">shopping_cart</i>
+                    Add to cart
+            </button>
+		<p></p>
+        </div>	
+		-->
+			<div class="d-none d-md-block">{{ .Content }}</div>
+        </div>
+    </div>
+	<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="mx-auto">{{ partial "product-body.html" . }} </div></div></div>
+</article>
+
+<!-- Footer -->
+{{ partial "footer.html" . }}
+<!-- Footer -->
+
+{{ partial "menu-bottom.html" . }}	
+
+<script src="{{ "menu/js/classie.js" | absURL }}"></script>
+<script src="{{ "menu/js/mlpushmenu.js" | absURL }}"></script>
+<script src="{{ "js/dscountdown.js" | absURL }}"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($){
+		var futureDate= new Date({{ .Params.date }});
+		if (new Date({{ .Params.date }}) < new Date() ) {futureDate.setDate(futureDate.getDate() + 10) }			
+				
+				$('.demo1').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00")
+				});
+				
+				$('.demo2').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'black'
+				});
+				
+				$('.demo3').dsCountDown({
+					endDate: new Date(futureDate),
+					theme: 'red',
+					titleDays: 'Days',
+					titleHours: 'Hours',
+					titleMinutes: 'Minutes',
+					titleSeconds: 'Seconds'
+				});
+				
+				$('.demo4').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'flat'
+				});
+				
+				$('.demo5').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'custome'
+				});
+				
+				$('.demo6').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					titleDays: 'Days',
+					titleHours: 'Hours',
+					titleMinutes: 'Minutes',
+					titleSeconds: 'Seconds'
+				});
+				
+				$('.demo7').dsCountDown({
+					startDate: new Date("December 24, 2020 23:59:00"), // this value is picked up by PHP script &lt;?php echo date('F d, Y h:i:s'); ?&gt;
+					endDate: new Date("December 24, 2020 23:59:00")
+				});
+				
+			});
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        document.getElementById("myTopBtn").style.display = "block";
+    } else {
+        document.getElementById("myTopBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}			
+			
+new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+		
+		</script>	
+{{ end }}
